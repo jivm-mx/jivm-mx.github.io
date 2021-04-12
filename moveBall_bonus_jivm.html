@@ -109,7 +109,11 @@ Por hacer: detener la ejecución y modificar dinámicamente los intervalos,
     // or clone.id = ""; if the divs don't need an ID
     bola.parentNode.appendChild(clone);
   }
-
-  setInterval(rebota, tiempo);
-  setInterval(duplicate, getRandomInt(minTiempodup, maxTiempodup));
+  function retraso(){
+    console.log("Hay que esperar que inicie la grabación del video")
+    setInterval(rebota,tiempo);
+    setInterval(duplicate, getRandomInt(minTiempodup, maxTiempodup));
+  }
+  
+  setTimeout(retraso,3000);
 </script>
