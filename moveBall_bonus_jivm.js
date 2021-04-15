@@ -35,12 +35,7 @@ var bounceInterval;
 var duplicateInterval;
 
 object = document.getElementById("object");
-/* Parámetros configurables*/
 
-/*
-Al tocar límite derecho, cambia el color de la bola, al tocar el límite izquierdo cambia la velocidad, al todar el límite inferior, cambia el radio y al tocar el límite superior, cambia el índice Z. Hay dos intervalos, uno para actualizar la posición de la bola y otro para realizar una copia y preservar ese estado en pantalla.
-Por hacer: detener la ejecución y modificar dinámicamente los intervalos,
-*/
 
 function start() {
   console.log("Hay que esperar que inicie la grabación del video");
