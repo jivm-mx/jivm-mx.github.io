@@ -26,4 +26,4 @@ function First() {
 function startExercises() {
   First();
 }
-setTimeout(startExercises, 1500);
+setTimeout(startExercises, 500);
