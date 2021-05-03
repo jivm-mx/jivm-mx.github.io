@@ -1,0 +1,28 @@
+{
+  "name": "jivm-mx.github.io",
+  "version": "1.0.0",
+  "description": "My MERN portfolio",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jivm-mx/jivm-mx.github.io.git"
+  },
+  "keywords": [
+    "Portfolio",
+    "MERN"
+  ],
+  "author": "Jorge I. Vargas M.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jivm-mx/jivm-mx.github.io/issues"
+  },
+  "homepage": "https://github.com/jivm-mx/jivm-mx.github.io#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
