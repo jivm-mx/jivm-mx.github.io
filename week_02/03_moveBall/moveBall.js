@@ -40,7 +40,6 @@ function startExercise() {
     background: 'green',
     speedLeft: 50,
     goForwardLeft: true,
-    goForwardTop: true,
   };
 
   setInterval(() => {
