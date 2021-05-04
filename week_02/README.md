@@ -8,4 +8,4 @@ Creation of various divs elements as circles to form different shapes, using con
 
 ## 02. Function objects
 
-Traverse a collection of given data to make a painting in the browser, using the objects and the function-objects provided
+Traverse a collection of given data to make a painting in the browser, using the objects and the function-objects provided.
