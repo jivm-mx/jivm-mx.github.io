@@ -37,7 +37,7 @@ function MainCircle(id) {
   circle.style.border = 'solid';
   circle.style.borderRadius = '100%';
   circle.style.borderWidth = '1px';
-  circle.style.borderColor = 'rgb(0,0,0)';
+  circle.style.borderColor = 'rgb(139,0,0)';
   document.body.appendChild(circle);
 }
 
@@ -52,7 +52,7 @@ function borderCircle(id, left, top) {
   circle.style.border = 'solid';
   circle.style.borderRadius = '100%';
   circle.style.borderWidth = '1px';
-  circle.style.borderColor = 'rgb(0,0,0)';
+  circle.style.borderColor = 'rgb(139,0,0)';
   document.body.appendChild(circle);
 }
 
@@ -78,8 +78,102 @@ function second() {
   borderCircle('border 18', 517, 233);
 }
 
+function thirdCircle(id, left, top) {
+  const circle = document.createElement('div');
+  circle.id = id;
+  circle.style.position = 'absolute';
+  circle.style.left = `${left}px`;
+  circle.style.top = `${top}px`;
+  circle.style.width = '50px';
+  circle.style.height = '50px';
+  circle.style.border = 'solid';
+  circle.style.borderRadius = '100%';
+  circle.style.borderWidth = '1px';
+  circle.style.borderColor = 'rgb(139,0,0)';
+  document.body.appendChild(circle);
+}
+
+function third() {
+  thirdCircle('3-1', 650, 255);
+  thirdCircle('3-2', 674, 230);
+  thirdCircle('3-3', 701, 255);
+  thirdCircle('3-4', 675, 281);
+  thirdCircle('3-5', 657, 273);
+  thirdCircle('3-6', 694, 273);
+  thirdCircle('3-7', 657, 238);
+  thirdCircle('3-8', 694, 238);
+}
+
+function bigFourth() {
+  const circle = document.createElement('div');
+  circle.id = 'Big fourth';
+  circle.style.position = 'absolute';
+  circle.style.left = '600px';
+  circle.style.top = '350px';
+  circle.style.width = '100px';
+  circle.style.height = '100px';
+  circle.style.border = 'solid';
+  circle.style.borderRadius = '100%';
+  circle.style.borderWidth = '1px';
+  circle.style.borderColor = 'rgb(139,0,0)';
+  document.body.appendChild(circle);
+}
+function centerFourth(id, left, top) {
+  const circle = document.createElement('div');
+  circle.id = id;
+  circle.style.position = 'absolute';
+  circle.style.left = `${left}px`;
+  circle.style.top = `${top}px`;
+  circle.style.width = '40px';
+  circle.style.height = '40px';
+  circle.style.border = 'solid';
+  circle.style.borderRadius = '100%';
+  circle.style.borderWidth = '1px';
+  circle.style.borderColor = 'rgb(139,0,0)';
+  document.body.appendChild(circle);
+}
+
+function littlefourth(id, left, top) {
+  const circle = document.createElement('div');
+  circle.id = id;
+  circle.style.position = 'absolute';
+  circle.style.left = `${left}px`;
+  circle.style.top = `${top}px`;
+  circle.style.width = '28px';
+  circle.style.height = '28px';
+  circle.style.border = 'solid';
+  circle.style.borderRadius = '100%';
+  circle.style.borderWidth = '1px';
+  circle.style.borderColor = 'rgb(139,0,0)';
+  document.body.appendChild(circle);
+}
+
+function fourth() {
+  bigFourth();
+  centerFourth('center', 630, 380);
+  littlefourth('4-01', 601, 380);
+  littlefourth('4-02', 607, 365);
+  littlefourth('4-03', 618, 356);
+  littlefourth('4-04', 632, 351);
+  littlefourth('4-05', 647, 352);
+  littlefourth('4-06', 660, 360);
+  littlefourth('4-07', 671, 380);
+  littlefourth('4-08', 669, 372);
+  littlefourth('4-09', 671, 387);
+  littlefourth('4-10', 668, 401);
+  littlefourth('4-11', 658, 414);
+  littlefourth('4-12', 646, 420);
+  littlefourth('4-13', 629, 421);
+  littlefourth('4-14', 617, 416);
+  littlefourth('4-15', 606, 405);
+  littlefourth('4-16', 601, 391);
+  /* TODO: Add more circles */
+}
+
 function startExercises() {
   first();
   second();
+  third();
+  fourth();
 }
 setTimeout(startExercises, 500);
