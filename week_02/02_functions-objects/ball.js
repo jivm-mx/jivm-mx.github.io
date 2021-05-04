@@ -1,4 +1,4 @@
-import { create, data } from './magic';
+// import { create, data } from './magic.js';
 
 function paint() {
   for (let i = 0; i < data.length; i += 1) {
