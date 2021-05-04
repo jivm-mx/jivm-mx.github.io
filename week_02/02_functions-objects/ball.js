@@ -13,6 +13,7 @@ function prepare() {
       counter += 1;
     }
   }
+  return data;
 }
 function create(x, y, color) {
   // set div attributes
