@@ -17,3 +17,7 @@ A simple ball movement simulation by changing the position within the window wid
 ## 04. Simulation - Two dimensional motion
 
 A ball moving in two dimensions, with edge detection.
+
+## 05. Simulation - Bonus exercise
+
+A ball moving in two dimensions, doing random stuff when touching edges (change radius, color, speed or duplicate itself). To start/stop, click top-right button.

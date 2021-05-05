@@ -1,5 +1,6 @@
 function calcStep(ballProps) {
   const bp = ballProps;
+  // https://www.w3schools.com/jsref/prop_win_innerheight.asp
   let widthLimit = window.innerWidth || document.documentElement.clientWidth
   || document.body.clientWidth;
   widthLimit -= bp.width;
