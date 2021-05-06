@@ -1,4 +1,5 @@
 const size = 30; // size of ball
+const strokeWidth = 5;
 const x = []; // position
 const y = [];
 const balls = []; // array to hold all free balls
@@ -6,15 +7,26 @@ const velocityX = [];
 const velocityY = [];
 const gravity = 1;
 let runInterval = '';
+// eslint-disable-next-line no-restricted-globals
+const loc = location;
 
 function checkWalls(i) {
   const rect = document.getElementById('rect');
   const limits = rect.getBoundingClientRect();
-  if (x[i] < (limits.left + Number(rect.style.strokeWidth))
-     || x[i] > (limits.right - (Number(rect.style.strokeWidth) + size))) { velocityX[i] = -velocityX[i]; }
-  if (y[i] > (limits.bottom - size)) {
+  const leftLimit = limits.left;
+  const rightLimit = limits.right;
+  const topLimit = limits.top;
+  const bottomLimit = limits.bottom;
+  if (x[i] < (leftLimit + strokeWidth) || x[i] > (rightLimit - (strokeWidth + size))) {
+    velocityX[i] = -velocityX[i];
+  }
+  if (y[i] > (bottomLimit - (strokeWidth + size))) {
     velocityY[i] = -velocityY[i];
     y[i] = (limits.bottom - size);
+  }
+  if (y[i] < topLimit) {
+    velocityY[i] = -velocityY[i];
+    // y[i] = topLimit;
   }
 }
 
@@ -31,8 +43,6 @@ function update() {
       balls[i].style.top = y[i];
     }
   }, 100);
-
-  // setTimeout(update, 100); // this calls update ever 1/10 second
 }
 // eslint-disable-next-line no-unused-vars
 function run() {
@@ -46,8 +56,9 @@ function run() {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function restart() {
-
+  loc.reload();
 }
 
 function getRandom(scale) {
@@ -75,7 +86,7 @@ function create() {
     const zIndex = getRandom(0, 100);
     const fixed = 0;
     // eslint-disable-next-line no-undef
-    const ball = makeBall([leftStart, topStart, zIndex], [size], color);
+    const ball = makeBall([leftStart, topStart, zIndex], [size], color, i);
     if (!fixed) {
       // only free balls will be updated
       balls.push(ball);

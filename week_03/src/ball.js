@@ -1,7 +1,7 @@
 // this function makes a ball with position and velocity set
 
 // eslint-disable-next-line no-unused-vars
-function makeBall(position, shape, color) {
+function makeBall(position, shape, color, id) {
   const ball = document.createElement('div');
   const left = position[0];
   const top = position[1];
@@ -13,7 +13,7 @@ function makeBall(position, shape, color) {
   ball.style.height = size;
   ball.style.width = size;
   ball.style.backgroundColor = `rgb(${color[0]},${color[1]}, ${color[2]})`;
-  ball.className = 'ball '; // + id;
+  ball.className = `ball ${id}`;
   document.body.appendChild(ball);
   return ball;
 }
