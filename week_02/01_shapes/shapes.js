@@ -14,7 +14,7 @@ function createCircle(position, shape, color) {
     circle.style.background = `rgb(${color[0][0]},${color[0][1]},${color[0][2]})`;
   }
   circle.style.borderColor = `rgb(${color[1][0]},${color[1][1]},${color[1][2]})`;
-  document.body.appendChild(circle);
+  document.getElementById('circles').appendChild(circle);
 }
 
 function first() {
