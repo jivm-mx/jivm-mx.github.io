@@ -19,10 +19,10 @@ function makeTable(numberOfRows) {
     rows.push(row);
     // eslint-disable-next-line no-console
     console.log(row);
-    const p = document.createElement('pre');
-    const br = document.createElement('br');
-    p.innerText = `${row}`;
-    table.appendChild(p);
+    const pre = document.createElement('pre');
+    const br = document.createElement('p');
+    pre.innerText = `${row}`;
+    table.appendChild(pre);
     table.appendChild(br);
   }
 }
