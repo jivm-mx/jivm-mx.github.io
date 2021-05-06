@@ -20,10 +20,10 @@ function makeTable(numberOfRows) {
     // eslint-disable-next-line no-console
     console.log(row);
     const pre = document.createElement('pre');
-    const br = document.createElement('p');
+    const p = document.createElement('p');
     pre.innerText = `${row}`;
     table.appendChild(pre);
-    table.appendChild(br);
+    table.appendChild(p);
   }
 }
 
