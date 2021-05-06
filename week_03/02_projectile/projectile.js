@@ -8,6 +8,8 @@ const velocity_y = [];
 const gravity = 1;
 
 function checkWalls(i) {
+  const container = document.getElementById('container');
+
   if (x[i] < 0 || x[i] > 800) velocity_x[i] = -velocity_x[i];
   if (y[i] > 400) {
     velocity_y[i] = -velocity_y[i];
@@ -31,24 +33,23 @@ function update() {
 function getRandom(scale) {
   return Math.random() * scale;
 }
+
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+// Retorna un entero aleatorio entre min (incluido) y max (excluido)
+// ¡Usando Math.round() te dará una distribución no-uniforme!
+function getRandomInt2(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 function create() {
   let total = document.getElementById('total').value;
   if (total === '' || total < 0) { total = 5; }
+  const rect = document.getElementById('rect').getBoundingClientRect();
   for (let i = 0; i < total; i += 1) {
     const velx = Math.floor(getRandom(20) - 10);
     const vely = Math.floor(getRandom(20) - 10);
-    const color = [getRandomInt(256), getRandomInt(256), getRandomInt(256)];
-    makeBall(getRandom(800), getRandom(400), color, size, velx, vely, 0);
-  }
-}
-
-function factory(total) {
-  // check how make balls exist already and add to the array
-  const n = balls.length;
-  for (let i = 0; i < total; i++) {
-    const velx = Math.floor(getRandom(20) - 10);
-    const vely = Math.floor(getRandom(20) - 10);
-    const color = [getRandomInt(256), getRandomInt(256), getRandomInt(256)];
-    makeBall(getRandom(800), getRandom(400), color, size, velx, vely, 0);
+    const color = [getRandomInt2(0, 256), getRandomInt2(0, 256), getRandomInt2(0, 256)];
+    makeBall(getRandomInt2(rect.left, (rect.right - size)),
+      getRandomInt2(rect.top, (rect.bottom - size)), color, size, velx, vely, 0);
   }
 }

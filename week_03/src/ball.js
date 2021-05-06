@@ -3,7 +3,7 @@
 // eslint-disable-next-line no-unused-vars
 function makeBall(xcoord, ycoord, color, size, zIndex, velx = 0, vely = 0, fixed = 0) {
   const ball = document.createElement('div');
-  ball.style.backgroundColor = color;
+  ball.style.backgroundColor = `rgb(${color[0]},${color[1]}, ${color[2]})`;
   ball.style.zIndex = zIndex;
   ball.className = 'ball '; // + id;
   ball.style.height = size;

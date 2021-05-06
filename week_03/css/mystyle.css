@@ -1,23 +1,18 @@
 body {
   display: flex; /* Use Flexbox                    */
-  justify-content: center; /* Center Horizontally            */
 }
 .ball {
-  width: 100px;
-  height: 100px;
+  width: 80%;
+  height: 80%;
   border-radius: 50%; /* Turns a square into a circle   */
-  background-color: #ff5722; /* Sets color to Orange           */
   position: absolute;
 }
 .svg-container {
   position: absolute;
-  top: 30px;
-  left: 30px;
+  
   width: 80%;
   height: 80%;
-  padding: 10px;
-  margin: 10px;
-  top: 70px;
+  top: 90px;
 }
 .h1{
   position: absolute;
