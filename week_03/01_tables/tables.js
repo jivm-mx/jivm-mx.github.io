@@ -1,7 +1,12 @@
 const makeRowString = function makeRowString(multiplier) {
   let row = '';
   for (let i = 0; i < 10; i += 1) {
-    row += `${multiplier * (i + 1)} `;
+    const result = `${multiplier * (i + 1)}`;
+    if (result.length === 1) {
+      row += `${result}  `;
+    } else {
+      row += `${result} `;
+    }
   }
   return row;
 };
@@ -14,9 +19,11 @@ function makeTable(numberOfRows) {
     rows.push(row);
     // eslint-disable-next-line no-console
     console.log(row);
-    const p = document.createElement('p');
+    const p = document.createElement('pre');
+    const br = document.createElement('br');
     p.innerText = `${row}`;
     table.appendChild(p);
+    table.appendChild(br);
   }
 }
 
