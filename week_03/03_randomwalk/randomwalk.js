@@ -3,8 +3,6 @@ const strokeWidth = 5;
 const fixed = 0;
 const x = []; // position
 const y = [];
-const velocityX = [];
-const velocityY = [];
 const balls = []; // array to hold all free balls
 const stepSize = 5; // step size every update
 
@@ -84,11 +82,11 @@ function create() {
   if (total === '' || total < 0) { total = 5; }
   let i = balls.length;
   const final = total + balls.length;
+  const color = [getRandomInt(0, 256), getRandomInt(0, 256), getRandomInt(0, 256)];
   for (i; i < final; i += 1) {
     const leftStart = 100;
     const topStart = 300;
     const zIndex = getRandom(0, 100);
-    const color = [getRandomInt(0, 256), getRandomInt(0, 256), getRandomInt(0, 256)];
     // eslint-disable-next-line no-undef
     ball = makeBall([leftStart, topStart, zIndex], [size], color, i);
     x[i] = leftStart;

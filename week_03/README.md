@@ -10,6 +10,10 @@ Practice the fundamentals of debugging by using loops to print multiplication ta
 
 Learn to load other files in current page (CSS and JS). Create balls that move under gravity and bounce off the walls. Each ball is stored in and array and created with a random color, at a specific location with specific velocity, under specific gravity conditions.
 
-## 03. Random Walk
+## 03. Random walk - Projectile exercise
 
-Exploration on how molecules move randomly (as in a sneeze) across the screen. Added gravity (so the virus particles drop to the ground), and refactoring to the code.
+Exploration on how molecules move randomly (as in a sneeze) across the screen. Added boundaries, gravity, speed (so the virus particles drop to the ground and travel at various sneeze speeds), plus code refactoring.
+
+## 04. Random walk 2 - Tracking projectile trajectory
+
+Tracking of the particles within boundaries, plus code refactoring.

@@ -1,14 +1,14 @@
 <link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
 
 <body>
-  <h1 class="h1">Projectile exercise</h1>
+  <h1 class="h1">Random walk projectile exercise</h1>
   <script src="../src/ball.js"></script>
   <script src="./randomwalk.js"></script>
   <div class="div">
     <table>
       <tr>
-        <td>Number of balls</td>
-        <td>Speed (-20 to 20)</td>
+        <td>Sneeze particles</td>
+        <td>Air direction (-20 to 20)</td>
         <td>Gravity (-10 to 10)</td>
       </tr>
       <tr>
@@ -17,9 +17,9 @@
         <td><input type="number" id="gravity" min="-10" max="10" value="1" /></td>
       </tr>
     </table>
-    <button onclick="create()">Click me to create balls</button>
-    <button onclick="run()">Click me to start/stop the simulation</button>
-    <button onclick="restart()">Click me to restart the environment</button>
+    <button onclick="create()">Click me to create sneeze particles</button>
+    <button onclick="run()">Click me to spread/stop the particles</button>
+    <button onclick="restart()">Click me to clean the room</button>
   </div>
 
   <div class="svg-containerRandom">

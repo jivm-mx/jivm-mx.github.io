@@ -75,10 +75,12 @@ function getRandomInt(min, max) {
 
 // eslint-disable-next-line no-unused-vars
 function create() {
-  let total = document.getElementById('total').value;
+  let total = Number(document.getElementById('total').value);
   if (total === '' || total < 0) { total = 5; }
+  let i = balls.length;
+  const final = total + balls.length;
   const rect = document.getElementById('rect').getBoundingClientRect();
-  for (let i = 0; i < total; i += 1) {
+  for (i; i < final; i += 1) {
     const velX = Math.floor(getRandom(20) - 10);
     const velY = Math.floor(getRandom(20) - 10);
     const color = [getRandomInt(0, 256), getRandomInt(0, 256), getRandomInt(0, 256)];
