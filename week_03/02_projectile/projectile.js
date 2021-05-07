@@ -1,5 +1,6 @@
 const size = 30; // size of ball
 const strokeWidth = 5;
+const fixed = 0;
 const x = []; // position
 const y = [];
 const balls = []; // array to hold all free balls
@@ -84,7 +85,7 @@ function create() {
     const leftStart = getRandomInt(rect.left, (rect.right - size));
     const topStart = getRandomInt(rect.top, (rect.bottom - size));
     const zIndex = getRandom(0, 100);
-    const fixed = 0;
+
     // eslint-disable-next-line no-undef
     const ball = makeBall([leftStart, topStart, zIndex], [size], color, i);
     if (!fixed) {
