@@ -1,7 +1,3 @@
-// This is a random walk.
-// use "factory" to make any number of balls
-// use update to start random walkers
-// Also "mousedown" will create a ball
 const size = 30; // size of ball
 const strokeWidth = 5;
 const x = []; // position
