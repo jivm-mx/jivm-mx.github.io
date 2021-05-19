@@ -40,7 +40,7 @@ function checkWalls(i) {
   }
   if (y[i] > (bottomLimit - (strokeWidth + size))) {
     velocityY[i] = -velocityY[i];
-    y[i] = (limits.bottom - size);
+    // y[i] = (limits.bottom - size);
   }
   if (y[i] < topLimit) {
     velocityY[i] = -velocityY[i];
@@ -65,10 +65,10 @@ function update() {
   // the wind speed is added to x direction
   if (balls.length >= 1) {
     runInterval = setInterval(() => {
-      let speed = Number(document.getElementById('speed').value);
-      if (speed === '' || speed < -21) { speed = 0; }
-      let gravity = Number(document.getElementById('gravity').value);
-      if (gravity === '' || gravity < -11) { gravity = 0; }
+    //   let speed = Number(document.getElementById('speed').value);
+    //   if (speed === '' || speed < -21) { speed = 0; }
+    //   let gravity = Number(document.getElementById('gravity').value);
+    //   if (gravity === '' || gravity < -11) { gravity = 0; }
       for (let i = 0; i < balls.length; i += 1) {
         x[i] += velocityX[i];
         y[i] += velocityY[i];
@@ -147,10 +147,10 @@ function create() {
         velocityX.push(-velx);
         velocityY.push(-vely);
       } else {
-        velx = getRandom(stepsize);
-        vely = getRandom(stepsize);
         velocityX.push(velx);
         velocityY.push(vely);
+        velx = getRandom(stepsize);
+        vely = getRandom(stepsize);
       }
     }
   }
