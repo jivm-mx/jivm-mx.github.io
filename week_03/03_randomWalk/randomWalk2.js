@@ -105,9 +105,6 @@ const mouse = function mouse(e) {
   const rightLimit = limits.right;
   const topLimit = limits.top;
   const bottomLimit = limits.bottom;
-
-  // if (leftStart > (leftLimit + strokeWidth) || leftStart < (rightLimit - (strokeWidth + size))
-  // || (topStart < (bottomLimit - (strokeWidth + size)) || topStart > topLimit))
   if (leftStart > (leftLimit + strokeWidth)
   && leftStart < (rightLimit - (strokeWidth + (size / 2)))) {
     if (topStart < (bottomLimit - (strokeWidth + (size / 2))) && topStart > topLimit) {

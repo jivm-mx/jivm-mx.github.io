@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
+
+<body>
+    <h1 class="h1">2D Universe</h1>
+    <script src="../src/ball.js"></script>
+    <script src='./bigBang.js'></script>
+    <div class="div">
+        <table>
+            <tr>
+                <td>God particles</td>
+                <td>Space air direction (-20 to 20)</td>
+                <td>Gravity (-10 to 10)</td>
+            </tr>
+            <tr>
+                <td> <input type="number" id="total" min="1" max="200" value="1" /></td>
+                <td><input type="number" id="speed" min="-20" max="20" value="1" /></td>
+                <td><input type="number" id="gravity" min="-10" max="10" value="0" /></td>
+            </tr>
+        </table>
+        <button onclick="create()">Click me to create God particles</button>
+        <button onclick="run()">Click me to spread/stop the particles</button>
+        <button onclick="restart()">Click me to clean the universe</button>
+    </div>
+    <div class="svg-containerRandom">
+        <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <rect id='rect' x="0" y="0" width="800" height="400" stroke="black" fill="transparent" stroke-width="5" />
+        </svg>
+    </div>
+</body>
