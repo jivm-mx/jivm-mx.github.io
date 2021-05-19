@@ -1,11 +1,25 @@
 <link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
-<h1 class="h1">Tracking projectile trajectory</h1>
+<h1 class="h1">Tracking projectile trajectory - Click to create particles</h1>
   <script src="../src/ball.js"></script>
   <script src="./randomWalk2.js"></script>
+  <div class="div">
+    <table>
+      <tr>
+        <td>Speed (-20 to 20)</td>
+        <td>Gravity (-10 to 10)</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="speed" min="-20" max="20" value="0" /></td>
+        <td><input type="number" id="gravity" min="-10" max="10" value="0" /></td>
+      </tr>
+    </table>
+    <button onclick="run()">Click me to spread/stop the particles</button>
+    <button onclick="restart()">Click me to clean the room</button>
+  </div>
 <body>
-  <div class="svg-container">
+  <div class="svg-containerRandom">
     <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="840" height="430" stroke="black" fill="transparent" stroke-width="5" />
+      <rect id='rect' x="0" y="0" width="840" height="430" stroke="black" fill="transparent" stroke-width="5" />
     </svg>
   </div>
 </body>
