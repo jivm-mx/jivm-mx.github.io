@@ -10,5 +10,18 @@
         "ecmaVersion": 12
     },
     "rules": {
+        "padding-line-between-statements": [
+            "error",
+            {"blankLine": "always", "prev": "*", "next":["block-like","multiline-block-like","multiline-const","multiline-let","multiline-expression"]},
+            {"blankLine": "always", "prev": ["block-like","multiline-block-like","multiline-const","multiline-let"], "next":"*"}
+        ]
     }
 }
+/*
+const obj2 = {
+  foo() {
+  },  FALTA AGREGAR REGLA PARA SOLICITAR ESPACIO DESPUÉS DE LA COMA
+  bar() {
+  },
+};
+*/

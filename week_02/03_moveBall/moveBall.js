@@ -1,20 +1,26 @@
 function calcStep(ballProps) {
   const bp = ballProps;
+
   let limit = window.innerWidth || document.documentElement.clientWidth
   || document.body.clientWidth;
+
   limit -= bp.width;
   const directionLeft = ballProps.goForwardLeft ? 1 : -1;
   bp.left += bp.speedLeft * directionLeft;
+
   if (bp.left > limit) {
     bp.left = limit;
     bp.goForwardLeft = false;
   }
+
   if (bp.left < 0) {
     bp.left = 0;
     bp.goForwardLeft = true;
   }
+
   return bp.left;
 }
+
 function update(ball, ballProps) {
   const b = ball;
   b.style.position = `${ballProps.position}`;
@@ -29,6 +35,7 @@ function update(ball, ballProps) {
 
 function startExercise() {
   const ball = document.getElementById('ball');
+
   const ballProps = {
     position: 'absolute',
     zIndex: 5,
