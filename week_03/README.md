@@ -16,7 +16,7 @@ Exploration on how molecules move randomly (as in a sneeze) across the screen. A
 
 ## 04. Random walk 2 - Tracking a projectile trajectory
 
-Now, we're tracking particles within boundaries, plus code refactoring.
+Now, we're tracking particles within boundaries, plus code refactoring. Click within the rentangle to create them.
 
 ## 05. Big bang
 
