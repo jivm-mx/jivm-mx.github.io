@@ -4,4 +4,18 @@ My MERN portfolio
 In this place, I will upload projects using the MERN stack.
 
 ## WEEK 02
-[The exercises for this week](./week_02/README.md) include HTML shapes and 2D movement simulation.
+[Computational Thinking](./week_02/README.md).
+
+## WEEK 03
+[Mental Model of Computing Operations](./week_03/README.md).
+
+## WEEK 04
+[Introduction To JavaScript](./week_04/README.md).
+
+## WEEK 05
+To be uploaded.
+<!--[Functions: Array Manipulation And Scope](./week_05/README.md).-->
+
+## WEEK 06
+To be uploaded.
+<!--[Callback Functions](./week_06/README.md).-->
