@@ -13,8 +13,7 @@ In this place, I will upload projects using the MERN stack.
 [Introduction To JavaScript](./week_04/README.md).
 
 ## WEEK 05
-To be uploaded.
-<!--[Functions: Array Manipulation And Scope](./week_05/README.md).-->
+[Functions: Array Manipulation And Scope](./week_05/README.md)
 
 ## WEEK 06
 To be uploaded.
