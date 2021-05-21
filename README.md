@@ -18,3 +18,6 @@ In this place, I will upload projects using the MERN stack.
 ## WEEK 06
 To be uploaded.
 <!--[Callback Functions](./week_06/README.md).-->
+
+## WEEK 07
+[Introduction to GitHub, testing and the DOM](./week_07/README.md)
