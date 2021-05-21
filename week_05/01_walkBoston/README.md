@@ -1,5 +1,7 @@
 ## Boston City Data Exercise
 
+[See files](../01_walkBoston/)
+
 The goal of this exercise is to pick out the top 5 earners in Boston (total salary + overtime) and list them out in the web page as shown below:
 Name     Total Earned 
 
@@ -10,7 +12,7 @@ You are given file index1.html which you will need to edit. You can rename it to
 
 You also need to use curl to get the Boston City data from https://pollysnips.s3.amazonaws.com/bostonEmployeeSalaries.json
 
-[Go to files](../01_walkBoston/)
+
 
 
 
