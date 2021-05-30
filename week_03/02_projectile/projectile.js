@@ -18,13 +18,16 @@ function checkWalls(i) {
   const rightLimit = limits.right;
   const topLimit = limits.top;
   const bottomLimit = limits.bottom;
+
   if (x[i] < (leftLimit + strokeWidth) || x[i] > (rightLimit - (strokeWidth + size))) {
     velocityX[i] = -velocityX[i];
   }
+
   if (y[i] > (bottomLimit - (strokeWidth + size))) {
     velocityY[i] = -velocityY[i];
     y[i] = (limits.bottom - size);
   }
+
   if (y[i] < topLimit) {
     velocityY[i] = -velocityY[i];
     // y[i] = topLimit;
@@ -45,6 +48,7 @@ function update() {
     }
   }, 100);
 }
+
 // eslint-disable-next-line no-unused-vars
 function run() {
   if (runInterval !== '') {
@@ -76,10 +80,13 @@ function getRandomInt(min, max) {
 // eslint-disable-next-line no-unused-vars
 function create() {
   let total = Number(document.getElementById('total').value);
+
   if (total === '' || total < 0) { total = 5; }
+
   let i = balls.length;
   const final = total + balls.length;
   const rect = document.getElementById('rect').getBoundingClientRect();
+
   for (i; i < final; i += 1) {
     const velX = Math.floor(getRandom(20) - 10);
     const velY = Math.floor(getRandom(20) - 10);
@@ -90,6 +97,7 @@ function create() {
 
     // eslint-disable-next-line no-undef
     const ball = makeBall([leftStart, topStart, zIndex], [size], color, i);
+
     if (!fixed) {
       // only free balls will be updated
       balls.push(ball);

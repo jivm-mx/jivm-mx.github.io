@@ -1,4 +1,4 @@
-# jivm-mx.github.io Week 05 - Exercises
+# jivm-mx.github.io Week 07 - Exercises
 
 Prettier & ESLint plugin for VSCode assisted in the refactoring of this code.
 

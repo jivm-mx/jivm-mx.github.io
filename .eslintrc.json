@@ -15,7 +15,8 @@
             "error",
             {"blankLine": "always", "prev": "*", "next":["block-like","multiline-block-like","multiline-const","multiline-let","multiline-expression"]},
             {"blankLine": "always", "prev": ["block-like","multiline-block-like","multiline-const","multiline-let"], "next":"*"}
-        ]
+        ],
+        "linebreak-style": ["error", "unix"]
     }
 }
 /*

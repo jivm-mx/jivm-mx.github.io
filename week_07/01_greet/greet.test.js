@@ -8,22 +8,28 @@ describe('Function pre-requirements', () => {
 
 describe('Functionality', () => {
   test('Return greeting', () => {
-    expect(greeting('Elizabeth')).toBe('Hello, Elizabeth');
+    expect(greeting('Elizabeth')).toEqual('Hello, Elizabeth');
   });
 
   test('Handling null values', () => {
-    expect(greeting(null)).toBe('Hello there!');
+    expect(greeting(null)).toEqual('Hello there!');
   });
 
   test('Shouting when needed', () => {
-    expect(greeting('JORGE')).toBe('HELLO JORGE!');
+    expect(greeting('JORGE')).toEqual('HELLO JORGE!');
   });
 
   test('Extended greet with two names', () => {
-    expect(greeting(['Jorge', 'Israel'])).toBe('Hello, Jorge, Israel');
+    expect(greeting(['Jorge', 'Israel'])).toEqual('Hello, Jorge, Israel');
   });
 
   test('Extended greet with more than two names', () => {
-    expect(greeting(['Jorge', 'Israel', 'Juan', 'Ismael', 'Jose', 'Miguel'])).toBe('Hello, Jorge, Israel, Juan, Ismael, Jose, Miguel');
+    expect(greeting(['Jorge', 'Israel', 'Juan', 'Ismael', 'Jose', 'Miguel'])).toEqual('Hello, Jorge, Israel, Juan, Ismael, Jose, Miguel');
   });
 });
+/*
+    What is the unit under test (module, function, class, whatever)?
+    What should it do? (Prose description)
+    What was the actual output?
+    What was the expected output?
+    How do you reproduce the failure? */
