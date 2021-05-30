@@ -37,7 +37,7 @@ function drawChart(set) {
     chartArea: { width: '75%', height: '95%' },
   };
 
-  const target = document.getElementById('chart_div');
+  const target = document.getElementById('container');
   const chart = new google.visualization.BarChart(target);
   chart.draw(data, options);
 }
