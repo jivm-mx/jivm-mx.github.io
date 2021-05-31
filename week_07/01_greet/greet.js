@@ -1,3 +1,5 @@
+/* TO DO: Solve greet.js:36 Uncaught ReferenceError: module is not defined
+    at greet.js:38 at browser */
 const container = document.getElementById('container');
 
 const greeting = (n) => {
