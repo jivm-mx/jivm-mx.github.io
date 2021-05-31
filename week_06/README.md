@@ -8,4 +8,4 @@ Prettier & ESLint plugin for VSCode assisted in the refactoring of this code.
 
 ## 02. Sort salaries of Chicago city<
 
-[Sort through JSON salary data from the city of Chicago to generate a graph to easily visualize trends.](./02_sortSalaries)
+[Sort through JSON salary data from the city of Chicago to generate a distribution graph to easily visualize trends.](./02_sortSalaries)

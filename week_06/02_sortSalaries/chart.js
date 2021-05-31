@@ -1,45 +1,45 @@
-
-//  dataset is a two dimensional array 
+/* global google */
+//  dataset is a two dimensional array
 //  the inner format is [x, y]
-//  the first position is used for  
+//  the first position is used for
 //  for column names and point labels
 // -------------------------------------
-var dataset = [['x', 'y']];
-
+const dataset = [['x', 'y']];
 
 //  build dataset
 // -------------------------------------
-function generateDataset(points){
-  var datapoint = [];
-  var index = 1;
-  var length = points.length;
-  for (var i=0; i<length; i++){
-      var p = points[i];
-      //var point = [p.x, p.y];
-      var point = [i, p.salary];
-      dataset[index] = point;
-      index++;
+// eslint-disable-next-line no-unused-vars
+function generateDataset(points) {
+  let index = 1;
+  const { length } = points;
+
+  for (let i = 0; i < length; i += 1) {
+    const p = points[i];
+    // var point = [p.x, p.y];
+    const point = [i, p.salary];
+    dataset[index] = point;
+    index += 1;
   }
+
   return dataset;
 }
 
-
 //  draw graph
 // -------------------------------------
-google.load("visualization", "1", {packages:["corechart"]});
+google.load('visualization', '1', { packages: ['corechart'] });
 
-function drawChart(dataset) {
+// eslint-disable-next-line no-unused-vars
+function drawChart(set) {
+  const data = google.visualization.arrayToDataTable(set);
 
-  var data = google.visualization.arrayToDataTable(dataset);
-
-  var options = {
+  const options = {
     title: 'City of Chicago Salaries',
-     pointSize: 1,
-     curveType: 'function',
-     vAxis: {gridlines:{count:20}}
+    pointSize: 1,
+    curveType: 'function',
+    vAxis: { gridlines: { count: 20 } },
   };
 
-  var target = document.getElementById('chart_div');
-  var chart = new google.visualization.ScatterChart(target);
+  const target = document.getElementById('container');
+  const chart = new google.visualization.ScatterChart(target);
   chart.draw(data, options);
 }

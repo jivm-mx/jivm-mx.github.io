@@ -1,3 +1,4 @@
+/* TODO: Fix bug of random jump in position when a ball touch one edge. */
 const size = 30; // size of ball
 const strokeWidth = 5;
 const x = []; // position
@@ -11,6 +12,7 @@ let ball = [];
 const loc = location;
 
 let totalFactoryOutput = 0;
+
 // To track ball we create a new ball every time it is moved.
 // The position of the old ball is used as base for new position
 // However this won't quite work if we call factory multiple times
@@ -20,9 +22,11 @@ function getRandom(step) {
   // return value between +step and -step
   return Math.random() * 2 * step - step;
 }
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
 function checkWalls(i) {
   const rect = document.getElementById('rect');
   const limits = rect.getBoundingClientRect();
@@ -30,30 +34,38 @@ function checkWalls(i) {
   const rightLimit = limits.right;
   const topLimit = limits.top;
   const bottomLimit = limits.bottom;
+
   if (x[i] < (leftLimit + strokeWidth) || x[i] > (rightLimit - (strokeWidth + size))) {
     x.splice(i, 1);
     balls.splice(i, 1);
     colors.splice(i, 1);
   }
+
   if (y[i] > (bottomLimit - (strokeWidth + size)) || (y[i] < topLimit)) {
     y.splice(i, 1);
     balls.splice(i, 1);
     colors.splice(i, 1);
   }
 }
+
 function update() {
   // the wind speed is added to x direction
   if (balls.length >= 1) {
     runInterval = setInterval(() => {
       let speed = Number(document.getElementById('speed').value);
+
       if (speed === '' || speed < -21) { speed = 0; }
+
       let gravity = Number(document.getElementById('gravity').value);
+
       if (gravity === '' || gravity < -11) { gravity = 0; }
+
       for (let i = 0; i < balls.length; i += 1) {
         x[i] += Math.random() * 20 - 10 + speed;
         y[i] += Math.random() * 20 - 10 + gravity;
         // eslint-disable-next-line prefer-destructuring
         const zIndex = balls[i].style.zIndex;
+
         // balls[i].style.left = x[i];
         // balls[i].style.top = y[i];
         // eslint-disable-next-line no-undef
@@ -105,6 +117,7 @@ const mouse = function mouse(e) {
   const rightLimit = limits.right;
   const topLimit = limits.top;
   const bottomLimit = limits.bottom;
+
   if (leftStart > (leftLimit + strokeWidth)
   && leftStart < (rightLimit - (strokeWidth + (size / 2)))) {
     if (topStart < (bottomLimit - (strokeWidth + (size / 2))) && topStart > topLimit) {
@@ -120,6 +133,7 @@ const mouse = function mouse(e) {
     }
   }
 };
+
 if (window.addEventListener) {
   if (runInterval === '') {
     document.addEventListener('mousedown', mouse, false);

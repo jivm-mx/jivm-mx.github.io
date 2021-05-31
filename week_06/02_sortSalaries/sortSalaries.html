@@ -1,50 +1,23 @@
 <!DOCTYPE html>
 <html>
+<p>
+<h1>City of Chicago salary information</h1>
+</p>
+<div class="div">
+    <table>
+        <tr>
+            <td>Menu:</td>
+        </tr>
+    </table>
+    <button onclick="preview()">Click me to preview the raw data</button>
+    <button onclick="graphPoints()" id="graphPoints">Click me to graph the salary data</button>
+	<button onclick="orderPoints()" id="orderPoints" disabled>Click me to order and graph the salary data</button>
+
+</div>
+<div id="container" style="width: 1280px; height: 1280px;"></div>
 <script src="https://www.google.com/jsapi"></script>
-<script src="chart.js"></script>
-<script src="salaries.js"></script>
-
-<div id="chart_div" style="width: 1280px; height: 1280px;"></div>
-
-<script>
-const salaries = chicago.data;
-
-const generatePoints = function(){
-
-	const points  = [];
-	salaries.forEach(function(item){
-		points.push({
-			job    : item[9],
-			salary : Number(item[11])
-		});					
-	});
-
-	// order by salary
-	 points.sort(compare);
-
-	return points;
-};
-
-function compare(a, b) {
-	if (a.salary < b.salary ) return -1
-	if (a.salary > b.salary) return 1;
-	if (a.salary === b.salary) return 0;
-	//return a.salary - b.salary;
-	// --------------------------
- 	//		YOUR CODE
- 	// 	Uncomment line 23 once
- 	//	you are you have written
- 	//  the compare function
- 	// --------------------------
-}
-
-
-window.onload = function run(){
-	const points = generatePoints();
-	const dataset = generateDataset(points);	
-	drawChart(dataset);
-};
-
-</script>
+<script src="./chart.js"></script>
+<script src="./salaries.js"></script>
+<script src="./sortSalaries.js"></script>
 
 </html>
