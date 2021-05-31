@@ -23,10 +23,12 @@ function checkWalls(i) {
   const rightLimit = limits.right;
   const topLimit = limits.top;
   const bottomLimit = limits.bottom;
+
   if (x[i] < (leftLimit + strokeWidth) || x[i] > (rightLimit - (strokeWidth + size))) {
     x.splice(i, 1);
     balls.splice(i, 1);
   }
+
   if (y[i] > (bottomLimit - (strokeWidth + size)) || (y[i] < topLimit)) {
     y.splice(i, 1);
     balls.splice(i, 1);
@@ -40,9 +42,13 @@ function update() {
   if (balls.length >= 1) {
     runInterval = setInterval(() => {
       let speed = Number(document.getElementById('speed').value);
+
       if (speed === '' || speed < -21) { speed = 0; }
+
       let gravity = Number(document.getElementById('gravity').value);
+
       if (gravity === '' || gravity < -11) { gravity = 0; }
+
       for (let i = 0; i < balls.length; i += 1) {
         x[i] += getRandom(stepSize) + speed;
         y[i] += getRandom(stepSize) + gravity;
@@ -53,6 +59,7 @@ function update() {
     }, 100); // this calls update ever 1/10 second
   }
 }
+
 // eslint-disable-next-line no-unused-vars
 function run() {
   if (runInterval !== '') {
@@ -69,6 +76,7 @@ function run() {
 function restart() {
   loc.reload();
 }
+
 // https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 // Retorna un entero aleatorio entre min (incluido) y max (excluido)
 // ¡Usando Math.round() te dará una distribución no-uniforme!
@@ -79,10 +87,13 @@ function getRandomInt(min, max) {
 // eslint-disable-next-line no-unused-vars
 function create() {
   let total = Number(document.getElementById('total').value);
+
   if (total === '' || total < 0) { total = 5; }
+
   let i = balls.length;
   const final = total + balls.length;
   const color = [getRandomInt(0, 256), getRandomInt(0, 256), getRandomInt(0, 256)];
+
   for (i; i < final; i += 1) {
     const leftStart = 100;
     const topStart = 300;
@@ -91,6 +102,7 @@ function create() {
     ball = makeBall([leftStart, topStart, zIndex], [size], color, i);
     x[i] = leftStart;
     y[i] = topStart;
+
     if (!fixed) {
       // only free balls will be updated
       balls.push(ball);

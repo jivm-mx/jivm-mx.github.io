@@ -70,6 +70,7 @@ const orderPoints = () => {
   points.sort(compare);
   const dataset = generateDataset(points);
   drawChart(dataset);
+  document.getElementById('orderPoints').disabled = true;
 };
 
 const checkInfo = (c) => {

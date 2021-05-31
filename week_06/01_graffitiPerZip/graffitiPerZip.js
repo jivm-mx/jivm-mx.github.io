@@ -49,6 +49,7 @@ const preview = () => {
   </table>`;
 
   container.innerHTML = table;
+  document.getElementById('loadButton').disabled = false;
 };
 
 function graffitiReports(zip) {
@@ -70,6 +71,7 @@ zipCodes.forEach(graffitiReports);
 const loadInfo = () => {
   const dataset = generateDataset(graffiti);
   drawChart(dataset);
+  document.getElementById('loadButton').disabled = true;
 };
 
 const checkInfo = (c) => {

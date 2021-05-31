@@ -36,6 +36,7 @@ function drawChart(set) {
     title: 'City of Chicago Salaries',
     pointSize: 1,
     curveType: 'function',
+    chartArea: { width: '75%', height: '90%' },
     vAxis: { gridlines: { count: 20 } },
   };
 

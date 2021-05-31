@@ -1,8 +1,10 @@
+const container = document.getElementById('container');
+
 const greeting = (n) => {
   const name = n;
   let greet = '';
 
-  if (name === null || name === undefined) {
+  if (name === null || name === undefined || name === '') {
     return 'Hello there!';
   }
 
@@ -22,6 +24,13 @@ const greeting = (n) => {
     }
   });
   return `Hello,${greet}`;
+};
+
+// eslint-disable-next-line no-unused-vars
+const loadGreet = () => {
+  const args = document.getElementById('args').value;
+  const html = `<h1>${greeting(args)}</h1>`;
+  container.innerHTML = html;
 };
 
 module.exports = greeting;
