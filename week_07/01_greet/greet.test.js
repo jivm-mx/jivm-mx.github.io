@@ -19,12 +19,24 @@ describe('Functionality', () => {
     expect(greeting('JORGE')).toEqual('HELLO JORGE!');
   });
 
-  test('Extended greet with two names', () => {
+  test('Extended greet object with two names', () => {
+    // eslint-disable-next-line comma-spacing
     expect(greeting(['Jorge', 'Israel'])).toEqual('Hello, Jorge, Israel');
   });
 
-  test('Extended greet with more than two names', () => {
+  test('Extended greet object with more than two names', () => {
+    // eslint-disable-next-line comma-spacing
     expect(greeting(['Jorge', 'Israel', 'Juan', 'Ismael', 'Jose', 'Miguel'])).toEqual('Hello, Jorge, Israel, Juan, Ismael, Jose, Miguel');
+  });
+
+  test('Extended greet string with two names and no spaces', () => {
+    // eslint-disable-next-line comma-spacing
+    expect(greeting('Jorge,Israel')).toEqual('Hello, Jorge, Israel');
+  });
+
+  test('Extended greet object with more than two names and mixed spaces', () => {
+    // eslint-disable-next-line comma-spacing
+    expect(greeting('Jorge,Israel,Juan, Ismael, Jose, Miguel')).toEqual('Hello, Jorge, Israel, Juan, Ismael, Jose, Miguel');
   });
 });
 /*

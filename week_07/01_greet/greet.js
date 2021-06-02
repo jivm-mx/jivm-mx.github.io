@@ -3,29 +3,50 @@
 const container = document.getElementById('container');
 
 const greeting = (n) => {
-  const name = n;
+  let name = [];
+  name = n;
   let greet = '';
 
   if (name === null || name === undefined || name === '') {
-    return 'Hello there!';
-  }
+    greet = 'Hello there!';
+  } else {
+    if (typeof name === 'string') {
+      if (name === n.toUpperCase()) {
+        greet = `HELLO ${n}!`;
+        return greet;
+      }
 
-  if (typeof name === 'string') {
-    if (name === n.toUpperCase()) {
-      return `HELLO ${n}!`;
+      if (n.includes(',')) {
+        const re = / /g;
+        const names = n.replace(re, '').split(',');
+
+        names.forEach((e, index) => {
+          if (index < (names.length - 1)) {
+            greet += ` ${e},`;
+          } else {
+            greet += ` ${e}`;
+          }
+        });
+        greet = `Hello,${greet}`;
+        return greet;
+      }
+
+      greet = `Hello, ${n}`;
     }
 
-    return `Hello, ${n}`;
+    if (typeof name === 'object') {
+      n.forEach((e, index) => {
+        if (index < (n.length - 1)) {
+          greet += ` ${e},`;
+        } else {
+          greet += ` ${e}`;
+        }
+      });
+      greet = `Hello,${greet}`;
+    }
   }
 
-  n.forEach((e, index) => {
-    if (index < (n.length - 1)) {
-      greet += ` ${e},`;
-    } else {
-      greet += ` ${e}`;
-    }
-  });
-  return `Hello,${greet}`;
+  return greet;
 };
 
 // eslint-disable-next-line no-unused-vars
