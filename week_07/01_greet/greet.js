@@ -57,3 +57,4 @@ const loadGreet = () => {
 };
 
 module.exports = greeting;
+// export default greeting;
