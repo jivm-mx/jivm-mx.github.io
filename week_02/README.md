@@ -3,7 +3,7 @@
 The provided code was refactored using Prettier and ESLint.
 
 ## 01. Shapes
-[Demonstrate various divs elements as circles to form different shapes, using concepts as variables, arrays, objects, and functions.](./01_shapes/).
+[Demonstrate various divs elements as circles to form different shapes, using concepts as variables, arrays, objects, and functions.](./01_shapes/shapes.html).
 
 
 ## 02. Painting
