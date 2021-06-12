@@ -1,3 +1,13 @@
+@charset "UTF-8";
+
+.bg-primary {
+  background-color: #0d1117 !important;
+}
+
+.bg-secondary {
+  background-color: #13171b !important;
+}
+
 .my-header {
   padding: 2rem;
 }

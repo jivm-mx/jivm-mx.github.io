@@ -12,9 +12,9 @@
   <title>./jivm-mx's personal page</title>
 </head>
 
-<body class="bg-light text-dark" id="page-top">
+<body class="bg-dark text-light" id="page-top">
   </div>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
     <div class="container-fluid">
       <a class="navbar-brand" href=#>./jivm-mx.github.io/</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -26,7 +26,11 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href=#page-top>Home</a>
           </li>
-          <!-- <li class="nav-item dropdown">
+          <li class="nav-item"><a class="nav-link" href=#portfolio>Portfolio</a></li>
+          
+          <!-- 
+            <li class="nav-item"><a class="nav-link" href=#experience>Experience</a></li>
+            <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
               MERN Portfolio</a>
@@ -52,36 +56,49 @@
     </div>
   </nav>
   <!-- About myself -->
-  <header class="my-header bg-info text-white text-center">
+  <header class="my-header bg-primary text-white text-center">
     <div class="container-fluid">
       <figure class="figure">
-        <img src="img/bioPhoto.png" class="figure-img img-fluid rounded-pill border border-light border-5" alt="The Author">
+        <img src="img/bioPhoto.png" class="figure-img img-fluid rounded-pill border border-light border-5"
+          alt="The Author">
         <figcaption class="figure-caption">The Author.</figcaption>
       </figure>
       <h1 class=''>jivm-mx</h1>
       <h2>Computer Systems Engineer | PMP | Full-Stack Developer</h2>
-      <a href=#>Soon, a video introduction of myself</a>
-        <!-- TODO: Add video introduction. -->
-    </div>   
+      <a href=#>Soon, a video introduction of myself.</a>
+      <!-- TODO: Add video introduction. -->
+    </div>
   </header>
   <!-- Portfolio -->
-  <section>
-    <div class="container-fluid" id="portfolio">
-
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="text-center">Portfolio</h2>
+      <div class="row">
+        <div class="col-lg-4 border border-light rounded-3">
+          <h3><a href=#></a>PacMen Exercise</a></h3>
+          <h2>Factory for making pacmen</h2>
+          <p>You are given a starter.html code.
+            When button "make one" is pressed you need to complete the code 
+            to position the new pacman image and add it to the "game" div. It is then added to the array of pacmen, which keeps track of the position and velocity of each pacman.
+            You also need to make each pacman bounce off any wall it hits. 
+            Start by getting at least one pacman positioned and viewable. </p>
+        </div>
+        <div class="col-lg-4 border border-light rounded-3">
+          <h3>Eye Exercise</h3>
+          <h2>Exercise on eyes</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</p>
+        </div>
+        <div class="col-lg-4 border border-light rounded-3">
+          <h3>Real Time Bus Tracking</h3>
+          <h2>Lorem ipsum dolor sit amet</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</p>
+        </div>
+      </div>
     </div>
   </section>
-
-<!-- 
-
-  
-    <section class="section-container" id="about">
-      
-    </section>
-  </div>
-
-  <hr />
-  <section id="experience">
-    <h2>Experience</h2>
+  <!-- <section id="experience">
+    <div class="container-fluid">
+      <h2>Experience</h2>
 
     <h3>Project Manager</h3>
     <h4>Grupo TI Mexico</h4>
@@ -127,8 +144,10 @@
     <p>In this company, I integrates third parties into mobile networks. I trained small and medium businesses in
       our APIs and supported their day-to-day operations. I also analyzed and tested JAVA code and SQL databases.
     </p>
-  </section>
-  <hr />
+    </div>
+  </section> -->
+
+  <!-- 
   <section id="education">
     <h2>Education</h2>
     <h3>Professional Certificate in Coding: Full Stack Development with MERN</h3>
@@ -202,6 +221,14 @@
       problems using software and hardware systems.
     </p>
   </section> -->
+
+  <!--
+    inspirations:
+    https://startbootstrap.com/theme/freelancer
+    https://azmind.com/bootstrap-4-tutorial-one-page-website/
+    https://www.mockplus.com/blog/post/bootstrap-navbar-template - 17. Responsive Fixed Animated NavBar
+    https://codepen.io/albizan/full/mMWdWZ
+  -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
