@@ -8,6 +8,8 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="./css/styles.css" rel="stylesheet" />
   <title>./jivm-mx's personal page</title>
 </head>
@@ -24,10 +26,9 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href=#page-top>Home</a>
+            <a class="nav-link active" aria-current="page" href=#page-top>About</a>
           </li>
           <li class="nav-item"><a class="nav-link" href=#portfolio>Portfolio</a></li>
-          
           <!-- 
             <li class="nav-item"><a class="nav-link" href=#experience>Experience</a></li>
             <li class="nav-item dropdown">
@@ -58,15 +59,34 @@
   <!-- About myself -->
   <header class="my-header bg-primary text-white text-center">
     <div class="container-fluid">
-      <figure class="figure">
-        <img src="img/bioPhoto.png" class="figure-img img-fluid rounded-pill border border-light border-5"
-          alt="The Author">
-        <figcaption class="figure-caption">The Author.</figcaption>
-      </figure>
-      <h1 class=''>jivm-mx</h1>
-      <h2>Computer Systems Engineer | PMP | Full-Stack Developer</h2>
-      <a href=#>Soon, a video introduction of myself.</a>
-      <!-- TODO: Add video introduction. -->
+      <div class="row">
+        <div class="col">
+          <h1>About</h1>
+          <figure class="figure">
+            <img src="img/bioPhoto.png" class="figure-img img-fluid rounded-pill border border-light border-5"
+              alt="The Author">
+            <figcaption class="figure-caption">The Author.</figcaption>
+          </figure>
+          <h2>Computer Systems Engineer | PMP | Full-Stack Developer</h2>
+          <ul>
+            <li>github username: jivm-mx https://github.com/jivm-mx</li>
+            <li>The best way to contact me is via LinkedIn.: www.linkedin.com/in/jivm-pmp</li>
+          </ul>
+        </div>
+        <div class="col">
+          <p>I'm Jorge, I'm 34 years old, living in Mexico City and I love outdoor sports. Specifically, I'm into rock
+            climbing because it's like solving a puzzle with your body by using the rock shapes to help yourself
+            scaling. I'm a Computer Systems Engineer and a Project Management Professional. Currently, I'm refreshing my
+            technical abilities through a professional certificate in full-stack Development.</p>
+          <p>
+            My skills and professional experience qualify me to work on multidisciplinary teams focused on solving
+            problems using software and hardware systems.</p>
+          <div class="ratio ratio-16x9 embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/VRaY1XANnCU"
+              allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
   <!-- Portfolio -->
@@ -78,15 +98,17 @@
           <h3><a href="./week_07/04_pacmen/pacmen.html">PacMen Exercise</a></h3>
           <h2>Factory for making pacmen</h2>
           <p>You are given a starter.html code.
-            When button "make one" is pressed you need to complete the code 
-            to position the new pacman image and add it to the "game" div. It is then added to the array of pacmen, which keeps track of the position and velocity of each pacman.
-            You also need to make each pacman bounce off any wall it hits. 
+            When button "make one" is pressed you need to complete the code
+            to position the new pacman image and add it to the "game" div. It is then added to the array of pacmen,
+            which keeps track of the position and velocity of each pacman.
+            You also need to make each pacman bounce off any wall it hits.
             Start by getting at least one pacman positioned and viewable. </p>
         </div>
         <div class="col-lg-4 border border-light rounded-3">
           <h3><a href="./week_08/01_eyes/eyes.html">Eye Exercise</a></h3>
           <h2>Exercise on eyes</h2>
-          <p>You’ll create a web page with two eyes that follow your mouse movement. This activity will require you to bring together your skills in JavaScript and CSS to create this dynamic experience.</p>
+          <p>You’ll create a web page with two eyes that follow your mouse movement. This activity will require you to
+            bring together your skills in JavaScript and CSS to create this dynamic experience.</p>
         </div>
         <div class="col-lg-4 border border-light rounded-3">
           <h3>Real Time Bus Tracking</h3>
