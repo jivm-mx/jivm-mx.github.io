@@ -7,8 +7,10 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #ffffff;
+}
+
+.bg-success {
+  background-color: #b2ccdf !important;
 }
 
 .bg-primary {
@@ -22,8 +24,21 @@ body {
 .my-header {
   padding-top: 4rem;
   padding-bottom: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.my-header .my-title {
+  font-size: 2.75rem;
+  line-height: 2.75rem;
+}
+.my-header .my-subtitle {
+  font-size: 1.25rem;
 }
 
 .page-section {
-  padding: 6rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
