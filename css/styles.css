@@ -51,3 +51,7 @@ a {
   color: #0c639c;
   text-decoration: none;
 }
+
+.left-link {
+  float: right;
+}
