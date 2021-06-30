@@ -21,17 +21,22 @@ function makePac() {
   // returns an object with random values scaled {x: 33, y: 21}
   const velocity = setToRandom(10); // {x:?, y:?}
   const position = setToRandom(200);
+  const game = document.getElementById('game');
+  const limits = game.getBoundingClientRect();
+  const leftLimit = limits.left;
+  const rightLimit = limits.right;
+  const topLimit = limits.top;
 
   // Add image to div id = game
-  const game = document.getElementById('game');
   const newimg = document.createElement('img');
   newimg.style.position = 'absolute';
-  newimg.src = `./img/acman${Math.floor(Math.random() * 4 + 1)}.png`;
+  newimg.src = `./images/pacman${Math.floor(Math.random() * 4 + 1)}.png`;
   newimg.width = 100;
 
   // TODO: set position here
-  newimg.style.left = position;
-  newimg.style.top = position;
+  newimg.style.left = rightLimit - leftLimit + position;
+
+  newimg.style.top = topLimit + position;
   // TODO add new Child image to game
   game.appendChild(newimg);
 
@@ -45,15 +50,28 @@ function makePac() {
 
 function checkCollisions(p) {
   const current = p;
+  const game = document.getElementById('game');
+  const limits = game.getBoundingClientRect();
+  const leftLimit = limits.left;
+  const rightLimit = limits.right;
+  const topLimit = limits.top;
+  const bottomLimit = limits.bottom;
 
-  if (p.position.x + p.newimg.width >= window.innerWidth || p.position.x < 0) {
+  if (p.position.x + p.newimg.width >= rightLimit) {
     current.velocity.x = -p.velocity.x;
   }
 
-  if (
-    p.position.y + p.newimg.height >= window.innerHeight ||
-    p.position.y < 0
-  ) {
+  if (p.position.x < leftLimit) {
+    p.position.x = leftLimit;
+    current.velocity.x = -p.velocity.x;
+  }
+
+  if (p.position.y + p.newimg.height >= bottomLimit) {
+    current.velocity.y = -p.velocity.y;
+  }
+
+  if (p.position.y < topLimit) {
+    p.position.y = topLimit;
     current.velocity.y = -p.velocity.y;
   }
 }

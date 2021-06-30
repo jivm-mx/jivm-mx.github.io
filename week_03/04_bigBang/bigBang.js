@@ -35,13 +35,19 @@ function checkWalls(i) {
   const rightLimit = limits.right;
   const topLimit = limits.top;
   const bottomLimit = limits.bottom;
-  if (x[i] < (leftLimit + strokeWidth) || x[i] > (rightLimit - (strokeWidth + size))) {
+
+  if (
+    x[i] < leftLimit + strokeWidth ||
+    x[i] > rightLimit - (strokeWidth + size)
+  ) {
     velocityX[i] = -velocityX[i];
   }
-  if (y[i] > (bottomLimit - (strokeWidth + size))) {
+
+  if (y[i] > bottomLimit - (strokeWidth + size)) {
     velocityY[i] = -velocityY[i];
     // y[i] = (limits.bottom - size);
   }
+
   if (y[i] < topLimit) {
     velocityY[i] = -velocityY[i];
     // y[i] = topLimit;
@@ -65,10 +71,10 @@ function update() {
   // the wind speed is added to x direction
   if (balls.length >= 1) {
     runInterval = setInterval(() => {
-    //   let speed = Number(document.getElementById('speed').value);
-    //   if (speed === '' || speed < -21) { speed = 0; }
-    //   let gravity = Number(document.getElementById('gravity').value);
-    //   if (gravity === '' || gravity < -11) { gravity = 0; }
+      //   let speed = Number(document.getElementById('speed').value);
+      //   if (speed === '' || speed < -21) { speed = 0; }
+      //   let gravity = Number(document.getElementById('gravity').value);
+      //   if (gravity === '' || gravity < -11) { gravity = 0; }
       for (let i = 0; i < balls.length; i += 1) {
         x[i] += velocityX[i];
         y[i] += velocityY[i];
@@ -84,6 +90,7 @@ function update() {
 function getRandom(scale) {
   return Math.floor(Math.random() * scale - scale / 2);
 }
+
 // function factory(total) {
 //   // check how make balls exist already and add to the array
 //   const n = balls.length;
@@ -126,11 +133,21 @@ function create() {
   const topLimit = limits.top;
   const bottomLimit = limits.bottom;
   let total = Number(document.getElementById('total').value);
-  if (total === '' || total < 0) { total = 1; }
+
+  if (total === '' || total < 0) {
+    total = 1;
+  }
+
   let i = balls.length;
-  const final = (total * 2) + balls.length; // make pairs
+  const final = total * 2 + balls.length; // make pairs
+
   for (i; i < final; i += 1) {
-    const color = [getRandomInt(0, 256), getRandomInt(0, 256), getRandomInt(0, 256)];
+    const color = [
+      getRandomInt(0, 256),
+      getRandomInt(0, 256),
+      getRandomInt(0, 256),
+    ];
+
     const leftStart = (rightLimit - leftLimit - size) / 2;
     const topStart = topLimit + (bottomLimit - topLimit - size) / 2;
     const zIndex = getRandom(0, 100);
@@ -138,11 +155,13 @@ function create() {
     ball = makeBall([leftStart, topStart, zIndex], [size], color, i);
     x[i] = leftStart;
     y[i] = topStart;
+
     if (!fixed) {
       // only free balls will be updated
       balls.push(ball);
       x.push(leftStart);
       y.push(topStart);
+
       if (i % 2 === 0) {
         velocityX.push(-velx);
         velocityY.push(-vely);

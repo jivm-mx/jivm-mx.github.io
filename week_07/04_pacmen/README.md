@@ -17,7 +17,7 @@ You can download this folder and open the index.html file on this folder on a br
 
 ## Roadmap
 
-So far, here are no future improvements
+Refactor the code.
 
 ## License
 
