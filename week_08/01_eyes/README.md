@@ -1,19 +1,21 @@
-# Pacmen exercise
+# Eyes exercise
 
 Prettier & ESLint plugin for VSCode assisted in the refactoring of this code.
 
 ## Description
 
-What would happen if you could create as many Pacman's as you want and then see them bouncing off the screen edges? In this exercise, one can make a Pacman by pressing the button 'Add Pacman'; every Pacman is a randomly selected image placed within a div element.
+Have you felt that someone is looking at you? Now, your mouse arrow will be followed by two fierce eyes, which are decided to not lose sight of it.
 
-It updates its position based on initial velocity random values. When an edge is reached, Pacman will bounce off.
+Using JavaScript and CSS, one can define elements and arrange them within the page to create this dynamic experience.
+
+This exercise work best on non-touch screens (touchscreen users need to tap in order to see the eyes moving).
 
 ## How to run
 
 You can download this folder and open the index.html file on a browser (Mozilla Firefox or Google Chrome).
 
-- To add a Pacman, click on the "Add Pacman" button.
-- To start the game, click on the "Start Game" button.
+- Move your mouse over the screen.
+- On touch screens, tap any part of the screen to make the eyes move to that point.
 
 ## Roadmap
 
@@ -42,5 +44,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-<img src="./img/PacMan1.png">
