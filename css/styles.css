@@ -42,3 +42,12 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+
+.licenses-certifications {
+  padding: 3rem;
+}
+
+a {
+  color: #0c639c;
+  text-decoration: none;
+}

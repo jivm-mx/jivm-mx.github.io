@@ -26,7 +26,7 @@ function makePac() {
   const game = document.getElementById('game');
   const newimg = document.createElement('img');
   newimg.style.position = 'absolute';
-  newimg.src = `./img/PacMan${Math.floor((Math.random() * 4) + 1)}.png`;
+  newimg.src = `./img/acman${Math.floor(Math.random() * 4 + 1)}.png`;
   newimg.width = 100;
 
   // TODO: set position here
@@ -46,11 +46,14 @@ function makePac() {
 function checkCollisions(p) {
   const current = p;
 
-  if ((p.position.x + p.newimg.width) >= window.innerWidth || p.position.x < 0) {
+  if (p.position.x + p.newimg.width >= window.innerWidth || p.position.x < 0) {
     current.velocity.x = -p.velocity.x;
   }
 
-  if ((p.position.y + p.newimg.height) >= window.innerHeight || p.position.y < 0) {
+  if (
+    p.position.y + p.newimg.height >= window.innerHeight ||
+    p.position.y < 0
+  ) {
     current.velocity.y = -p.velocity.y;
   }
 }
