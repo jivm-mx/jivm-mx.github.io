@@ -22,12 +22,11 @@ body {
   border-style: solid;
   border-color: lightcyan;
 }
-/* form {
-  grid-column-start: 1;
-  grid-column-end: 2;
-} */
 
-/* .content {
-  grid-column-start: 2;
- position: absolute; 
-}  */
+input,
+button,
+select {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
