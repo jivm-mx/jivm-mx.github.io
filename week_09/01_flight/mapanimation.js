@@ -22,6 +22,10 @@ const map = new mapboxgl.Map({
   center: [-99.04513062012029, 19.50113241433945],
   zoom: 4,
 });
+
+map.on('load', () => {
+  map.resize();
+});
 // const lamin = '13.9790';
 // // const lomin = '-114.7385';
 // const lamax = '32.3912';
