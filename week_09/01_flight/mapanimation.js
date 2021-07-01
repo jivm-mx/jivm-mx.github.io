@@ -53,7 +53,6 @@ const FromMexicoFlights = (flights) => {
   }
 
   const form = `<form>
-         <b> Which flight do you want to track?</b>
          <select id="flightList" >
          ${data}
          </select> 
@@ -66,7 +65,7 @@ const FromMexicoFlights = (flights) => {
 const checkInfo = (c, f) => {
   const cont = c;
   const flights = f;
-  let html = '<h1>Data is LOADED and ready to be manipulated </h1>';
+  let html = '<h1>Which flight do you want to track?</h1>';
   let status = true;
 
   if (
@@ -74,7 +73,8 @@ const checkInfo = (c, f) => {
     || flights === null
     || flights instanceof Error
   ) {
-    html = '<h1>ERROR GETTING DATA</h1>';
+    html = `<h1>Unable to load the data, due to <em>${flights}</em> condition</h1>
+    <h2><button onclick="window.location.reload()">Please refresh this page with this button</button></h2> `;
     status = false;
   }
 
@@ -103,8 +103,8 @@ const loadFlights = async (url) => {
 };
 
 const loadStaticElements = () => {
-  content.innerHTML += `<h1>Please wait between 30s to 1min</h1>
-  <h2> The data is loading</h2>
+  content.innerHTML += `<h1>Fetching data from OpenSky API, please wait...</h1>
+  <h2>Status: downloading the data</h2>
   `;
   // eslint-disable-next-line no-undef
   mapboxgl.accessToken = 'pk.eyJ1IjoibW94bGV5LWtydXoiLCJhIjoiY2twb21uYXY0MDB0aDJxcGw0YnZuNWZxbyJ9.oPt_blIqKiCQlt9QkcXZMg';
@@ -167,8 +167,11 @@ const updatePosition = async () => {
 (async () => {
   loadStaticElements();
   const flights = await loadFlights(urlAll);
-  checkInfo(content, flights);
-  mexicanFlights = flights.states.filter((item) => item[2] === 'Mexico');
-  FromMexicoFlights(mexicanFlights);
-  updatePosition();
+  const status = checkInfo(content, flights);
+
+  if (status) {
+    mexicanFlights = flights.states.filter((item) => item[2] === 'Mexico');
+    FromMexicoFlights(mexicanFlights);
+    updatePosition();
+  }
 })();
