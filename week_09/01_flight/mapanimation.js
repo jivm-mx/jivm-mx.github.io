@@ -13,8 +13,10 @@ const myFlights = [];
 let map = '{}';
 const lamin = '13.9790';
 const lomin = '-114.7385';
-const lamax = '32.3912';
-const lomax = '-94.4578';
+// const lamax = '32.3912';
+// const lomax = '-94.4578';
+const lamax = '26.2203';
+const lomax = '-97.4222';
 
 const urlAll = `https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`;
 
@@ -74,7 +76,7 @@ const checkInfo = (c, f) => {
     || flights instanceof Error
   ) {
     html = `<h1>Unable to load the data, due to <em>${flights}</em> condition</h1>
-    <h2><button onclick="window.location.reload()">Please refresh this page with this button</button></h2> `;
+    <h2><button onclick="window.location.reload()">Please refresh this page to try again :(</button></h2> `;
     status = false;
   }
 
@@ -170,6 +172,7 @@ const updatePosition = async () => {
   const status = checkInfo(content, flights);
 
   if (status) {
+    // console.log(`Total flights: ${flights.states.length}`);
     mexicanFlights = flights.states.filter((item) => item[2] === 'Mexico');
     FromMexicoFlights(mexicanFlights);
     updatePosition();
