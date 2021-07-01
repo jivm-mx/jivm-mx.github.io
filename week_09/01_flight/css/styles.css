@@ -2,9 +2,25 @@ body {
   margin: 0;
   padding: 0;
 }
-#map {
-  position: absolute;
+
+.container {
+  display: grid;
+  grid-template-columns: 0rem 1fr;
+  grid-template-rows: 1fr 5fr auto;
+}
+
+.map {
   top: 0;
   bottom: 0;
-  width: 100%;
+  grid-column-end: 3;
+  grid-row-end: auto;
 }
+/* form {
+  grid-column-start: 1;
+  grid-column-end: 2;
+} */
+
+/* .content {
+  grid-column-start: 2;
+ position: absolute; 
+}  */
