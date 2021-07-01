@@ -1,4 +1,3 @@
-/* global flights */
 // https://opensky-network.org/api/states/all?lamin=13.979002559411905&lomin=-114.7385961862692&lamax=32.39122915883972&lomax=-94.4578347389994
 // min = 13.979002559411905, -114.7385961862692
 // max = 32.39122915883972, -94.4578347389994
@@ -9,82 +8,71 @@
 // https://opensky-network.org/api/tracks/all?icao24=0d07f0&time=1623524002
 
 const content = document.getElementById('content');
-const TotalFlights = flights.states;
+let mexicanFlights = [];
+const myFlights = [];
+let map = '{}';
+const lamin = '13.9790';
+const lomin = '-114.7385';
+const lamax = '32.3912';
+const lomax = '-94.4578';
 
-// eslint-disable-next-line no-undef
-mapboxgl.accessToken =
-  'pk.eyJ1IjoibW94bGV5LWtydXoiLCJhIjoiY2twb21uYXY0MDB0aDJxcGw0YnZuNWZxbyJ9.oPt_blIqKiCQlt9QkcXZMg';
+const urlAll = `https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`;
 
-// eslint-disable-next-line no-undef
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [-99.04513062012029, 19.50113241433945],
-  zoom: 4,
-});
+// eslint-disable-next-line no-unused-vars
+const createMarker = () => {
+  const flightId = document.getElementById('flightList').options[document.getElementById('flightList').selectedIndex].id;
+  const el = document.createElement('div');
+  el.className = 'marker';
+  el.style.backgroundImage = 'url(./images/airplane.png)';
+  el.style.width = '20px';
+  el.style.height = '20px';
+  el.style.backgroundSize = '100%';
 
-map.on('load', () => {
-  map.resize();
-});
-// const lamin = '13.9790';
-// // const lomin = '-114.7385';
-// const lamax = '32.3912';
-// // const lomax = '-94.4578';
-// const lomin = '-99';
-// const lomax = '-50';
+  // eslint-disable-next-line no-undef, no-unused-vars
+  const marker = new mapboxgl.Marker(el)
+    .setLngLat([mexicanFlights[flightId][5], mexicanFlights[flightId][6]])
+    .setPopup(
+      // eslint-disable-next-line no-undef
+      new mapboxgl.Popup().setHTML(
+        `<p>Vuelo ${mexicanFlights[flightId][1]} desde ${mexicanFlights[flightId][2]}</p>`,
+      ),
+    )
+    .addTo(map);
 
-// const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`;
+  document.getElementById(flightId).setAttribute('disabled', 'true');
 
-// const columns = [
-//   'icao24',
-//   'callsign',
-//   'origin_country',
-//   'time_position',
-//   'last_contact',
-//   'longitude',
-//   'latitude',
-//   'baro_altitude',
-//   'on_ground',
-//   'velocity',
-//   'true_track',
-//   'vertical_rate',
-//   'sensors',
-//   'geo_altitude',
-//   'squack',
-//   'spi',
-//   'position_source',
-// ];
+  myFlights.push(mexicanFlights[flightId]);
+};
 
-// async function getInfo() {
-//   try {
-//     // const response = await fetch(url, {
-//     //   mode: 'cors',
-//     //   headers: {
-//     //     'Access-Control-Allow-Origin': '*',
-//     //   },
-//     // });
-//     const response = await fetch('./all.json');
+const FromMexicoFlights = (flights) => {
+  const f = flights;
+  let data = '';
 
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     } else {
-//       const json = await response.json();
-//       return json;
-//     }
-//   } catch (e) {
-//     return e;
-//   }
-// }
+  for (let i = 0; i < f.length; i += 1) {
+    data += `<option id ="${i}" value ="${f[i][0]}" >Origin: ${f[i][2]}, Id: ${f[i][0]}-${f[i][1]}</option>`;
+  }
 
-const checkInfo = (c) => {
+  const form = `<form>
+         <b> Which flight do you want to track?</b>
+         <select id="flightList" >
+         ${data}
+         </select> 
+         </form>
+         <button onClick="createMarker()">Follow this airplane</button>`;
+
+  content.innerHTML += form;
+};
+
+const checkInfo = (c, f) => {
   const cont = c;
+  const flights = f;
   let html = '<h1>Data is LOADED and ready to be manipulated </h1>';
   let status = true;
 
   if (
-    typeof flights === 'undefined' ||
-    flights === null ||
-    flights instanceof Error
+    typeof flights === 'undefined'
+    || flights === null
+    || flights instanceof Error
   ) {
     html = '<h1>ERROR GETTING DATA</h1>';
     status = false;
@@ -94,149 +82,93 @@ const checkInfo = (c) => {
   return status;
 };
 
-// eslint-disable-next-line no-unused-vars
-function addFlight() {
-  const l = document.getElementById('flightList');
-  const selectedFlight = l.options[l.selectedIndex].value;
-  console.log(selectedFlight);
-  const flight = TotalFlights.filter((item) => item[0] === selectedFlight);
-  console.log(flight);
-  const el = document.createElement('div');
-  el.className = 'marker';
-  el.style.backgroundImage = 'url(./images/airplane.png)';
-  el.style.width = '20px';
-  el.style.height = '20px';
-  el.style.backgroundSize = '100%';
+const loadFlights = async (url) => {
+  try {
+    const response = await fetch(url, {
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
 
-  const marker = new mapboxgl.Marker(el)
-    .setLngLat([flight[0][5], flight[0][6]])
-    .setPopup(
-      new mapboxgl.Popup().setHTML(
-        `<p>Vuelo ${flight[0][1]} desde ${flight[0][2]}</p>`,
-      ),
-    )
-    .addTo(map);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      const json = await response.json();
+      return json;
+    }
+  } catch (e) {
+    return e;
+  }
+};
 
-  document.getElementById(selectedFlight).setAttribute('disabled', 'true');
-}
-
-function checkOrigin(flight, country) {
-  console.log(flight);
-  return flight[2] === country;
-}
-
-async function run() {
-  // eslint-disable-next-line no-undef
-
+const loadStaticElements = () => {
   content.innerHTML += `<h1>Please wait between 30s to 1min</h1>
-    <h2> The data is loading</h2>
-    `;
-  // const flights = await getInfo();
+  <h2> The data is loading</h2>
+  `;
+  // eslint-disable-next-line no-undef
+  mapboxgl.accessToken = 'pk.eyJ1IjoibW94bGV5LWtydXoiLCJhIjoiY2twb21uYXY0MDB0aDJxcGw0YnZuNWZxbyJ9.oPt_blIqKiCQlt9QkcXZMg';
 
-  // onst status = checkInfo(content);
-  // console.log(status);
+  // eslint-disable-next-line no-undef
+  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-99.04513062012029, 19.50113241433945],
+    zoom: 4,
+  });
 
-  const filteredFligths = TotalFlights.filter((item) => item[2] === 'Mexico');
-  let flightdata = '';
+  map.on('load', () => {
+    map.resize();
+  });
+};
 
-  for (let i = 0; i < filteredFligths.length; i += 1) {
-    flightdata += `<option id ="${filteredFligths[i][0]}" value ="${filteredFligths[i][0]}" >Flight from ${filteredFligths[i][2]} with icao24 id ${filteredFligths[i][0]} and callsign ${filteredFligths[i][1]}</option>`;
+const updatePosition = async () => {
+  let urlAllIcao = 'https://opensky-network.org/api/states/all?';
+  let params = '';
+  let response = '';
+
+  for (let i = 0; i < myFlights.length; i += 1) {
+    params += `icao24=${(myFlights[i][0])}&`;
   }
 
-  const form = `<form>
-         <b> Which  flight you want to track?</b>
-         <select id="flightList" onchange = "addFlight()" >
-         ${flightdata}
-         </select>
-     <input type = "hidden" id ="flight" size = "70"
-         </form>`;
+  urlAllIcao = `${urlAllIcao}${params}`;
 
-  content.innerHTML += form;
+  if (params !== '') {
+    response = await loadFlights(urlAllIcao);
+  }
 
-  // for (let i = 0; i < filteredFligths.length; i += 1) {
-  //   const el = document.createElement('div');
-  //   el.className = 'marker';
-  //   el.style.backgroundImage = 'url(./images/airplane.png)';
-  //   el.style.width = '20px';
-  //   el.style.height = '20px';
-  //   el.style.backgroundSize = '100%';
+  const flights = response.states;
 
-  //   const marker = new mapboxgl.Marker(el)
-  //     .setLngLat([filteredFligths[i][5], filteredFligths[i][6]])
-  //     .setPopup(
-  //       new mapboxgl.Popup().setHTML(
-  //         `<p>Vuelo ${filteredFligths[i][1]} desde ${filteredFligths[i][2]}</p>`,
-  //       ),
-  //     )
-  //     .addTo(map);
+  if (flights !== undefined) {
+    for (let i = 0; i < flights.length; i += 1) {
+      const el = document.createElement('div');
+      el.className = 'marker';
+      el.style.backgroundImage = 'url(./images/airplane.png)';
+      el.style.width = '20px';
+      el.style.height = '20px';
+      el.style.backgroundSize = '100%';
 
-  //   if (status) {
-  //     let flightdata = '';
-  //     // const headers = '';
+      // eslint-disable-next-line no-undef, no-unused-vars
+      const marker = new mapboxgl.Marker(el)
+        .setLngLat([flights[i][5], flights[i][6]])
+        .setPopup(
+          // eslint-disable-next-line no-undef
+          new mapboxgl.Popup().setHTML(
+            `<p>Vuelo ${flights[i][1]} desde ${flights[i][2]}</p>`,
+          ),
+        )
+        .addTo(map);
+    }
+  }
 
-  //     for (let i = 0; i < flights.states.length; i += 1) {
-  //       flightdata += `<option value ="${flights.states[i][0]}" >Flight from ${flights.states[i][2]} with icao24 id ${flights.states[i][0]} and callsign ${flights.states[i][1]}</option>`;
-  //     }
+  setTimeout(updatePosition, 15000);
+};
 
-  //     const form = `<form>
-  //     <b> Which  flight you want to track?</b>
-  //     <select id="flightList" onchange = "addFlight()" >
-  //     ${flightdata}
-  //     </select>
-  //     <p> Adding:
-  // <input type = "text" id ="flight" size = "70" </p>
-  //     </form>`;
-
-  //     content.innerHTML += form;
-
-  // eslint-disable-next-line no-undef
-
-  // eslint-disable-next-line no-undef
-  // }
-
-  //   for (let i = 0; i < columns.length; i += 1) {
-  //     headers += `<th scope="col" >${columns[i]}</th>`;
-  //   }
-
-  //   for (let i = 0; i < flights.states.length; i += 1) {
-  //     flightdata += '<tr>';
-
-  //     for (let j = 0; j < flights.states[i].length; j += 1) {
-  //       flightdata += `<td>${flights.states[i][j]}</td>`;
-  //     }
-
-  //     flightdata += '</tr>';
-  //   }
-
-  //   const table = `<table class='table'>
-  //               <caption> flights</caption>
-  //               <thead><tr> ${headers} </tr></thead>
-  //               <tbody><tr> ${flightdata} </tr></tbody>
-  //           </table>`;
-
-  //   map.innerHTML += table;
-  // }
-
-  //   for (let i = 0; i < flights.states.length; i += 1) {
-  //     const marker = '';
-  //     const el = document.createElement('div');
-  //     el.className = 'marker';
-  //     el.style.backgroundImage = 'url(./airplane.png)';
-  //     el.style.width = '20px';
-  //     el.style.height = '20px';
-  //     el.style.backgroundSize = '100%';
-
-  //     const market = new mapboxgl.Marker(el)
-  //       .setLngLat([flights.states[i][5], flights.states[i][6]])
-  //       .setPopup(
-  //         new mapboxgl.Popup().setHTML(
-  //           `<p>Vuelo ${flights.states[i][1]} desde ${flights.states[i][2]}</p>`,
-  //         ),
-  //       )
-  //       .addTo(mapbox);
-  //   }
-
-  //   setTimeout(run, 15000);
-}
-
-run();
+(async () => {
+  loadStaticElements();
+  const flights = await loadFlights(urlAll);
+  checkInfo(content, flights);
+  mexicanFlights = flights.states.filter((item) => item[2] === 'Mexico');
+  FromMexicoFlights(mexicanFlights);
+  updatePosition();
+})();

@@ -1,12 +1,16 @@
 body {
   margin: 0;
   padding: 0;
+  background: lightblue;
 }
 
 .container {
   display: grid;
   grid-template-columns: 0rem 1fr;
   grid-template-rows: 1fr 5fr auto;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
 .map {
@@ -14,6 +18,9 @@ body {
   bottom: 0;
   grid-column-end: 3;
   grid-row-end: auto;
+  margin: 0.5rem;
+  border-style: solid;
+  border-color: lightcyan;
 }
 /* form {
   grid-column-start: 1;
