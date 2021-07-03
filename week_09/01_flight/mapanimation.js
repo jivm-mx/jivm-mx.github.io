@@ -8,17 +8,10 @@
 // https://opensky-network.org/api/tracks/all?icao24=0d07f0&time=1623524002
 
 const content = document.getElementById('content');
+let flights = JSON.parse(sessionStorage.getItem('preloadFlights'));
 let mexicanFlights = [];
 const myFlights = [];
 let map = '{}';
-const lamin = '13.9790';
-const lomin = '-114.7385';
-// const lamax = '32.3912';
-// const lomax = '-94.4578';
-const lamax = '26.2203';
-const lomax = '-97.4222';
-
-const urlAll = `https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`;
 
 // eslint-disable-next-line no-unused-vars
 const createMarker = () => {
@@ -46,8 +39,8 @@ const createMarker = () => {
   myFlights.push(mexicanFlights[flightId]);
 };
 
-const FromMexicoFlights = (flights) => {
-  const f = flights;
+const FromMexicoFlights = (flightsValues) => {
+  const f = flightsValues;
   let data = '';
 
   for (let i = 0; i < f.length; i += 1) {
@@ -66,16 +59,16 @@ const FromMexicoFlights = (flights) => {
 
 const checkInfo = (c, f) => {
   const cont = c;
-  const flights = f;
+  const flightData = f;
   let html = '<h1>Which flight do you want to track?</h1>';
   let status = true;
 
   if (
-    typeof flights === 'undefined'
-    || flights === null
-    || flights instanceof Error
+    typeof flightData === 'undefined'
+    || flightData === null
+    || flightData instanceof Error
   ) {
-    html = `<h1>Unable to load the data, due to <em>${flights}</em> condition</h1>
+    html = `<h1>Unable to load the data, due to <em>${flightData}</em> condition</h1>
     <h2><button onclick="window.location.reload()">Please refresh this page to try again :(</button></h2> `;
     status = false;
   }
@@ -108,6 +101,7 @@ const loadStaticElements = () => {
   content.innerHTML += `<h1>Fetching data from OpenSky API, please wait...</h1>
   <h2>Status: downloading the data</h2>
   `;
+  /* TODO: Hide access key :( */
   // eslint-disable-next-line no-undef
   mapboxgl.accessToken = 'pk.eyJ1IjoibW94bGV5LWtydXoiLCJhIjoiY2twb21uYXY0MDB0aDJxcGw0YnZuNWZxbyJ9.oPt_blIqKiCQlt9QkcXZMg';
 
@@ -139,24 +133,24 @@ const updatePosition = async () => {
     response = await loadFlights(urlAllIcao);
   }
 
-  const flights = response.states;
+  const updatedFlights = response.states;
 
-  if (flights !== undefined) {
-    for (let i = 0; i < flights.length; i += 1) {
+  if (updatedFlights !== undefined) {
+    for (let i = 0; i < updatedFlights.length; i += 1) {
       const el = document.createElement('div');
       el.className = 'marker';
-      el.style.backgroundImage = 'url(./images/airplane.png)';
+      el.style.backgroundImage = 'url(./images/airport_blue.svg)';
       el.style.width = '20px';
       el.style.height = '20px';
       el.style.backgroundSize = '100%';
 
       // eslint-disable-next-line no-undef, no-unused-vars
       const marker = new mapboxgl.Marker(el)
-        .setLngLat([flights[i][5], flights[i][6]])
+        .setLngLat([updatedFlights[i][5], updatedFlights[i][6]])
         .setPopup(
           // eslint-disable-next-line no-undef
           new mapboxgl.Popup().setHTML(
-            `<p>Vuelo ${flights[i][1]} desde ${flights[i][2]}</p>`,
+            `<p>Vuelo ${updatedFlights[i][1]} desde ${updatedFlights[i][2]}</p>`,
           ),
         )
         .addTo(map);
@@ -168,7 +162,22 @@ const updatePosition = async () => {
 
 (async () => {
   loadStaticElements();
-  const flights = await loadFlights(urlAll);
+
+  if (
+    typeof flights === 'undefined'
+    || flights === null
+    || flights instanceof Error
+  ) {
+    const lamin = '13.9790';
+    const lomin = '-114.7385';
+    // const lamax = '32.3912';
+    // const lomax = '-94.4578';
+    const lamax = '26.2203';
+    const lomax = '-97.4222';
+    const urlAll = `https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`;
+    flights = await loadFlights(urlAll);
+  }
+
   const status = checkInfo(content, flights);
 
   if (status) {

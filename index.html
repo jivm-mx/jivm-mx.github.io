@@ -13,6 +13,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="./css/styles.css" rel="stylesheet" />
+  <script src="./week_09/01_flight/loadFlights.js"></script>
+  <script>
+    (async () => {
+      const lamin = '13.9790';
+      const lomin = '-114.7385';
+      const lamax = '26.2203';
+      const lomax = '-97.4222';
+      const urlAll = `https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`;
+      var preloadFlights = await loadFlights(urlAll);
+      sessionStorage.setItem("preloadFlights",JSON.stringify(preloadFlights));
+    })();
+  </script>
   <title>./jivm-mx's personal page</title>
 </head>
 
@@ -51,10 +63,10 @@
           <button type="button" class="btn btn-secondary bg-success btn-lg"><a class="link-light"
               href="https://github.com/jivm-mx" target="_blank" rel="noopener noreferrer">
               <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
-              viewBox="0 0 16 16">
-              <path
-                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">
-              </path>
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                </path>
               </svg>
             </a></button>
           <button type="button" class="btn btn-secondary bg-success btn-lg"><a class="link-light"
@@ -112,8 +124,10 @@
                 reached, Pacman will bounce off.</p>
             </div>
             <div class="card-footer">
-              <a href="./week_07/04_pacmen/index.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Run it!</a>
-              <a href="https://github.com/jivm-mx/jivm-mx.github.io/tree/main/week_07/04_pacmen" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg left-link">Source code</a>
+              <a href="./week_07/04_pacmen/index.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Run
+                it!</a>
+              <a href="https://github.com/jivm-mx/jivm-mx.github.io/tree/main/week_07/04_pacmen" target="_blank"
+                rel="noopener noreferrer" class="btn btn-outline-light btn-lg left-link">Source code</a>
             </div>
           </div>
         </div>
@@ -129,8 +143,10 @@
                 create this dynamic experience.</p>
             </div>
             <div class="card-footer">
-              <a href="./week_08/01_eyes/index.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Run it!</a>
-              <a href="https://github.com/jivm-mx/jivm-mx.github.io/tree/main/week_08/01_eyes" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg left-link">Source code</a>
+              <a href="./week_08/01_eyes/index.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Run
+                it!</a>
+              <a href="https://github.com/jivm-mx/jivm-mx.github.io/tree/main/week_08/01_eyes" target="_blank"
+                rel="noopener noreferrer" class="btn btn-outline-light btn-lg left-link">Source code</a>
             </div>
           </div>
         </div>
@@ -139,11 +155,16 @@
             <div class="card-header">Week 09: Asynchronous Code</div>
             <div class="card-body">
               <h5 class="card-title">Real Time Flight Tracking</h5>
-              <p class="card-text">Using the OpenSky API to track airplanes over the Mexican sky, almost in real-time, by getting every Mexican airplane in a rectangle area (within a fixed min and max latitude and longitude) corresponding to the Mexican airspace. Once selected an airplane for tracking, a marker will be added every 15 seconds, indicating the new position.</p>
+              <p class="card-text">Using the OpenSky API to track airplanes over the Mexican sky, almost in real-time,
+                by getting every Mexican airplane in a rectangle area (within a fixed min and max latitude and
+                longitude) corresponding to the Mexican airspace. Once selected an airplane for tracking, a marker will
+                be added every 15 seconds, indicating the new position.</p>
             </div>
             <div class="card-footer">
-              <a href="./week_09/01_flight/index.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Run it!</a>
-              <a href="https://github.com/jivm-mx/jivm-mx.github.io/tree/main/week_09/01_flight" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg left-link">Source code</a>
+              <a href="./week_09/01_flight/index.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Run
+                it!</a>
+              <a href="https://github.com/jivm-mx/jivm-mx.github.io/tree/main/week_09/01_flight" target="_blank"
+                rel="noopener noreferrer" class="btn btn-outline-light btn-lg left-link">Source code</a>
             </div>
           </div>
         </div>
@@ -156,7 +177,8 @@
                 of the course (around ten weeks.</p>
             </div>
             <div class="card-footer">
-              <a href="./portfolio.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Check them out</a>
+              <a href="./portfolio.html" rel="noopener noreferrer" class="btn btn-outline-info btn-lg">Check them
+                out</a>
             </div>
           </div>
         </div>
@@ -169,9 +191,11 @@
     <div class="container-fluid licenses-certifications">
       <h1 class="text-center mb-5">Certifications & continuous education courses</h1>
       <h3 class="mb-0">Professional Certificate in Coding: Full Stack Development with MERN</h3>
-      <h4  class="mb-0"><a href="https://executive-ed.xpro.mit.edu/certificado-profesional-programacion/" target="_blank" rel="noopener noreferrer">MIT xPro in collaboration with Emeritus</a></h4>    
-      <h5  class="mb-0">March - November 2021</h5>    
-      <p class="text-lg-start">This program is designed to prepare you with the skills you will need to start or continue your career in
+      <h4 class="mb-0"><a href="https://executive-ed.xpro.mit.edu/certificado-profesional-programacion/" target="_blank"
+          rel="noopener noreferrer">MIT xPro in collaboration with Emeritus</a></h4>
+      <h5 class="mb-0">March - November 2021</h5>
+      <p class="text-lg-start">This program is designed to prepare you with the skills you will need to start or
+        continue your career in
         web and application development. High level learning outcomes for this program include:
       <ul>
         <li>Build, test, and deploy a web application using the MERN stack.</li>
@@ -184,18 +208,22 @@
       </p>
 
       <h3 class="mb-0">PMP</h3>
-      <h4 class="mb-0"><a href="https://www.credly.com/badges/f422049c-47fc-4982-bd02-56caf0359565/public_url" target="_blank" rel="noopener noreferrer">Project Management Institute</a></h4>    
-      <h5 class="mb-0">Nov 2020</h5>    
-      <p class="text-lg-start">The Project Management Professional (PMP)® is the world's leading project management certification. Now
+      <h4 class="mb-0"><a href="https://www.credly.com/badges/f422049c-47fc-4982-bd02-56caf0359565/public_url"
+          target="_blank" rel="noopener noreferrer">Project Management Institute</a></h4>
+      <h5 class="mb-0">Nov 2020</h5>
+      <p class="text-lg-start">The Project Management Professional (PMP)® is the world's leading project management
+        certification. Now
         including predictive, agile and hybrid approaches, the PMP® proves project leadership experience and
         expertise in any way of working. It supercharges careers for project leaders across industries and helps
         organizations find the people they need to work smarter and perform better.
       </p>
 
       <h3 class="mb-0">Internet of Things: Roadmap to a Connected World</h3>
-      <h4 class="mb-0"><a href="https://courses.edx.org/certificates/fe64311d79c3440595f199eb9370aefb" target="_blank" rel="noopener noreferrer">MITx on edX</a></h4>    
-      <h5 class="mb-0">December 2017</h5>    
-      <p class="text-lg-start">This 6-week e-course provides executives and senior leadership a foundational understanding of the Internet
+      <h4 class="mb-0"><a href="https://courses.edx.org/certificates/fe64311d79c3440595f199eb9370aefb" target="_blank"
+          rel="noopener noreferrer">MITx on edX</a></h4>
+      <h5 class="mb-0">December 2017</h5>
+      <p class="text-lg-start">This 6-week e-course provides executives and senior leadership a foundational
+        understanding of the Internet
         of Things and its implications for the enterprise. The course introduces both the broad range of IoT
         technologies and the most recent developments in the space.
       </p>
