@@ -18,7 +18,7 @@ const createMarker = () => {
   const flightId = document.getElementById('flightList').options[document.getElementById('flightList').selectedIndex].id;
   const el = document.createElement('div');
   el.className = 'marker';
-  el.style.backgroundImage = 'url(./images/airplane.png)';
+  el.style.backgroundImage = 'url(./images/airport_blue.svg)';
   el.style.width = '20px';
   el.style.height = '20px';
   el.style.backgroundSize = '100%';
