@@ -26,7 +26,7 @@ function NavBar() {
           <ul className="navbar-nav mr-auto">
             <li className="av-item active">
               <a className="nav-link" href="#/login/" title="Login">
-                {currentUser ? 'Hello ' + currentUser[0].name : 'Login'}
+                {currentUser ? 'Hello ' + currentUser[0].name : 'Login '}
               </a>
             </li>
             <li className="av-item">
