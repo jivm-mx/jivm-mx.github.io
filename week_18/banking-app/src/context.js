@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 const UserContext = React.createContext(null);
 
 function Card(props) {
   function classes() {
-    const bg = props.bgcolor ? " bg-" + props.bgcolor : " ";
-    const txt = props.txtcolor ? " text-" + props.txtcolor : " text-white";
-    return "card mb-3 " + bg + txt;
+    const bg = props.bgcolor ? ' bg-' + props.bgcolor : ' ';
+    const txt = props.txtcolor ? ' text-' + props.txtcolor : ' text-white';
+    return 'card mb-3 ' + bg + txt;
   }
 
   return (
